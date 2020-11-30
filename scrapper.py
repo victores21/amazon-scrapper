@@ -43,7 +43,7 @@ def findListOfProducts(productToSearch):
      listOfProductsInJson = json.dumps(productList)
      print("Json",listOfProductsInJson)
 
-     with open(f'{toSearch}.json', 'w') as f:
+     with open(f'{productToSearch}_List.json', 'w') as f:
           json.dump(productList, f)
 
      driver.quit()
@@ -79,44 +79,16 @@ def getProductDetail(productUrl, fileName):
           
 
 
-#Read Files
-with open('Computer.json', 'r') as f:
+findListOfProducts(toSearch)
+
+#Read the json and scrap the products
+with open('computer_List.json', 'r') as f:
      computerJson = json.load(f)
      index = 0
      for computerJson in computerJson:
           getProductDetail(computerJson.get("productUrl"), index)
           index += 1
           print(index)
-
-
-
-
-
-
-
-# getProductDetail("https://www.amazon.com/-/es/gp/slredirect/picassoRedirect.html/ref=pa_sp_atf_aps_sr_pg1_1?ie=UTF8&adId=A0851361U1ATS988B5I7&url=%2FDL72319-inal%25C3%25A1mbrico-retroiluminada-intercomunicador-insuperable%2Fdp%2FB088BF7ZDL%2Fref%3Dsr_1_1_sspa%3F__mk_es_US%3D%25C3%2585M%25C3%2585%25C5%25BD%25C3%2595%25C3%2591%26dchild%3D1%26keywords%3DPhone%26qid%3D1606698772%26sr%3D8-1-spons%26psc%3D1&qualifier=1606698772&id=8419949052712960&widgetName=sp_atf")
-# findListOfProducts(toSearch)
-#productsUrl.get_attribute("href") for link
-
-# for productUrl in productsUrl:
-#     print(productUrl.get_attribute("href"))
-
-# for index, item in enumerate(productsUrl):
-#     print(index, item)
-
-# for productTitle in productsTitle:
-#     print(productTitle.text)
-# try:
-#     main = WeproductTitleDriverWait(driver, 10).until(
-#         EC.presence_of_element_located((By.ID, "main"))
-#     )
-#     articles = main.find_elements_by_class_name("entry-title")
-#     print(productContainer)
-
-#     for article in articles:
-#         print(article.text)
-# finally:
-#     driver.quit()
 
 
 
